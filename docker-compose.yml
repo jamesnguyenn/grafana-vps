@@ -31,21 +31,21 @@ services:
     labels:
       org.label-schema.group: "monitoring"
 
-  alertmanager:
-    image: prom/alertmanager:v0.20.0
-    container_name: alertmanager
-    volumes:
-      - ./alertmanager:/etc/alertmanager
-    command:
-      - '--config.file=/etc/alertmanager/config.yml'
-      - '--storage.path=/alertmanager'
-    restart: unless-stopped
-    expose:
-      - 9093
-    networks:
-      - monitor-net
-    labels:
-      org.label-schema.group: "monitoring"
+  # alertmanager:
+  #   image: prom/alertmanager:v0.20.0
+  #   container_name: alertmanager
+  #   volumes:
+  #     - ./alertmanager:/etc/alertmanager
+  #   command:
+  #     - '--config.file=/etc/alertmanager/config.yml'
+  #     - '--storage.path=/alertmanager'
+  #   restart: unless-stopped
+  #   expose:
+  #     - 9093
+  #   networks:
+  #     - monitor-net
+  #   labels:
+  #     org.label-schema.group: "monitoring"
 
   nodeexporter:
     image: prom/node-exporter:v0.18.1
@@ -119,7 +119,7 @@ services:
     ports:
       - "3000:3000"
       - "9090:9090"
-      - "9093:9093"
+      # - "9093:9093"
       - "9091:9091"
     volumes:
       - ./caddy:/etc/caddy
